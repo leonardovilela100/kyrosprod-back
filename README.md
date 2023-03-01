@@ -23,16 +23,28 @@
 
 <h4>A aplicação estará rodando em http://localhost:8080.</h4>
 
-| Coluna 1 | Coluna 2 | Coluna 3 |
+| Método | URL | Descrição |
 | -------- | -------- | -------- |
-| Valor 1  | Valor 2  | Valor 3  |
-| Valor 4  | Valor 5  | Valor 6  |
+| GET  |/api/produtos  | Retorna todos os produtos cadastrados |
+| POST  | /api/produtos | 	Cadastra um novo produto  |
+| PATCH  |	/api/produtos/{id} | 	Ativar um produto  |
+| PATCH  |	/api/produtos/{id} | 	Desativar um produto  |
+| DELETE  |		/api/produtos/{id} | 	Exclui um produto específico  |
 
-<h2> </h2>
-<p> </p>
+<h2>Formato do JSON</h2>
+<h3>Cadastrar Produto</h3>
 
-<h2> </h2>
-<p> </p>
+```json
+
+{
+  "nome": "João",
+  "sobrenome": "Silva",
+  "idade": 30
+}
+```
+
+<h2>Utilizando a API</h2>
+<p>Para utilizar a API, basta acessar a URL http://localhost:8080/api/produtos utilizando uma ferramenta como o Postman ou o cURL.</p>
 
 <h2> </h2>
 <p> </p>
