@@ -38,8 +38,13 @@ public class UsuarioService {
 		}
 	}
 
-	public Page<Usuario> buscarUsuarios(Long id, String nome, String tipo_usuario, PageRequest pageRequest) {
-		return usuarioRepository.buscarUsuarios(id, nome, tipo_usuario, pageRequest);
+	public Page<Usuario> buscarUsuarios(Long id, String nome, String tipo_usuario, Boolean ativo,
+			PageRequest pageRequest) {
+		return usuarioRepository.buscarUsuarios(id, nome, tipo_usuario, ativo, pageRequest);
+	}
+
+	public void deletarUsuario(Long id) {
+		usuarioRepository.deleteById(id);
 	}
 
 }

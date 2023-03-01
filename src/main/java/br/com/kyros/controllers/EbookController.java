@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,12 +27,12 @@ public class EbookController {
 	private EbookService ebookService;
 
 	@GetMapping
-	public Page<Ebook> buscarEbooks(@RequestParam(required = false) Long codigo,
+	public Page<Ebook> buscarEbooks(@RequestParam(required = false) Boolean ativo,@RequestParam(required = false) Long codigo,
 			@RequestParam(required = false) String titulo, @RequestParam(required = false) String autor,
 			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size,
 			@RequestParam(defaultValue = "codigo") String sort) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.by(sort));
-		return ebookService.buscarEbooks(codigo, titulo, autor, pageRequest);
+		return ebookService.buscarEbooks(codigo, titulo, autor,ativo, pageRequest);
 	}
 
 	@PostMapping
@@ -51,6 +52,11 @@ public class EbookController {
 	public ResponseEntity<Void> ativarEbook(@PathVariable Long codigo) {
 		ebookService.ativarEbook(codigo);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deletarEbook(@PathVariable Long id) {
+		ebookService.deletarEbook(id);
 	}
 
 }

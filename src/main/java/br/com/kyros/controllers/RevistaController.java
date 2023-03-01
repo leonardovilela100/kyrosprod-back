@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,12 +27,12 @@ public class RevistaController {
 	private RevistaService revistaService;
 
 	@GetMapping
-	public Page<Revista> buscarRevistas(@RequestParam(required = false) Long codigo,
-			@RequestParam(required = false) String titulo, @RequestParam(required = false) String ano_edicao,
-			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size,
-			@RequestParam(defaultValue = "codigo") String sort) {
+	public Page<Revista> buscarRevistas(@RequestParam(required = false) Boolean ativo,
+			@RequestParam(required = false) Long codigo, @RequestParam(required = false) String titulo,
+			@RequestParam(required = false) String ano_edicao, @RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "codigo") String sort) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.by(sort));
-		return revistaService.buscarRevistas(codigo, titulo, ano_edicao, pageRequest);
+		return revistaService.buscarRevistas(codigo, titulo, ano_edicao,ativo, pageRequest);
 	}
 
 	@PostMapping
@@ -51,6 +52,11 @@ public class RevistaController {
 	public ResponseEntity<Void> ativarRevista(@PathVariable Long codigo) {
 		revistaService.ativarRevista(codigo);
 		return ResponseEntity.noContent().build();
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deletarRevista(@PathVariable Long id) {
+		revistaService.deletarRevista(id);
 	}
 
 }

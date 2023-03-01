@@ -39,16 +39,14 @@ public class RevistaService {
         } 
     }
     
-    public Page<Revista> buscarRevistas(Long codigo, String titulo, String ano_edicao, PageRequest pageRequest) {
-        return revistaRepository.buscarRevista(codigo, titulo, ano_edicao, pageRequest);
+    public Page<Revista> buscarRevistas(Long codigo, String titulo, String ano_edicao,Boolean ativo, PageRequest pageRequest) {
+        return revistaRepository.buscarRevista(codigo, titulo, ano_edicao,ativo, pageRequest);
     }
     
+	public void deletarRevista(Long id) {
+		revistaRepository.deleteById(id);
+	}
     
-    
-    /*
-    public List<Livro>  buscaTodosLivros() {
-    	return (List<Livro>) livroRepository.findAll();	
-    }
-    */
+ 
     
 }

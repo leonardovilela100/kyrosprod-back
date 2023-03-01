@@ -1,6 +1,7 @@
 package br.com.kyros.services;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,9 +102,10 @@ public class EmprestimoService {
 		devolver.setAtivo(false);
 		devolver.setDataDevolucao(LocalDate.now());
 
-		if (devolver.getDataPrevistaDevolucao() != null   // verificar esse logica
-				&& devolver.getDataPrevistaDevolucao().isAfter(LocalDate.now())) {
-			devolver.setMulta(true); 
+		if (devolver.getDataPrevistaDevolucao() != null
+				&& devolver.getDataPrevistaDevolucao().isBefore(LocalDate.now())) {
+			devolver.setMulta(true);
+			
 		} else {
 			devolver.setMulta(false);
 		}
@@ -144,5 +146,10 @@ public class EmprestimoService {
 
 		return emprestimoRepository.save(devolver);
 	}
-
+	
+	public List<Emprestimo> buscarTodosEmprestimos() {
+	    return emprestimoRepository.findAll();
+	}
+	
+  
 }

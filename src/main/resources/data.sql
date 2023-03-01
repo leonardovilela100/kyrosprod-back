@@ -1,11 +1,3 @@
-INSERT INTO usuario(id, nome, tipo_usuario, ativo)
-VALUES
-   (1, 'Leonardo', 'Aluno', true),
-   (2, 'Ricardo', 'Professor', true),
-   (3, 'Maria', 'Professor', true);
+INSERT INTO usuario VALUES (1, 'Leonardo','123456789', 'estudante', true)
 
-
-
-   INSERT INTO livro(
-            codigo, titulo, autor, editora, ano_edicao, ativo)
-    VALUES (1, 'Programação Seculo 22', 'Leonardo', 'Veja', 2022, true);
+INSERT INTO usuario VALUES ('Leonardo','123456789', 'estudante')
