@@ -14,7 +14,7 @@
 <p>Execute o comando mvn install para compilar e empacotar o projeto</p>
 
 <h2>Configuração do Banco de Dados</h2>
-<p>O banco de dados utilizado neste projeto é o H2. Ele é um banco de dados em memória, que é criado e populado automaticamente durante a inicialização da aplicaçã</p>
+<p>O banco de dados utilizado neste projeto é o H2. Ele é um banco de dados em memória, que é criado e populado automaticamente durante a inicialização da aplicação</p>
 
 
 <h2>Executando a Aplicação</h2>
