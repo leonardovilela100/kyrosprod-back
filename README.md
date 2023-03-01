@@ -61,7 +61,9 @@
 - size: quantidade de itens por página (padrão: 10)
 - sortBy: nome do campo a ser usado para ordenar os resultados (padrão: id)
 - sortOrder: direção da ordenação (ascendente ou descendente, padrão: asc)
-<h4>Outros Filtros</h4>
+
+ <h4>OUTROS FILTROS </h4>
+
 - ativo: False ou True, para retornar usuários que estão desativados ou ativados 
 - id: Codigo
 - nomedousuario: Busca pelo nome do usuário 
@@ -104,7 +106,9 @@
 - size: Quantidade de itens por página (padrão: 10)
 - sortBy: Nome do campo a ser usado para ordenar os resultados (padrão: id)
 - sortOrder: Direção da ordenação (ascendente ou descendente, padrão: asc)
-<h4>Outros Filtros</h4>
+
+ <h4>OUTROS FILTROS </h4>
+
 - emprestado:  False ou True, para retornar livros emprestados
 - codigo: Busca pelo Código do Livro 
 - titulo: Busca pelo título
@@ -151,7 +155,9 @@
 - size: Quantidade de itens por página (padrão: 10)
 - sortBy: Nome do campo a ser usado para ordenar os resultados (padrão: id)
 - sortOrder: Direção da ordenação (ascendente ou descendente, padrão: asc)
-<h4>Outros Filtros</h4>
+
+ <h4>OUTROS FILTROS </h4>
+
 - emprestado:  False ou True, para retornar ebooks que estão emprestados
 - codigo: Busca pelo Código do Ebook 
 - titulo: Busca pelo título
@@ -195,7 +201,9 @@
 - size: Quantidade de itens por página (padrão: 10)
 - sortBy: Nome do campo a ser usado para ordenar os resultados (padrão: id)
 - sortOrder: Direção da ordenação (ascendente ou descendente, padrão: asc)
-<h4>Outros Filtros</h4>
+
+ <h4>OUTROS FILTROS </h4>
+
 - emprestado:  False ou True, para retornar revistas que estão emprestadas
 - codigo: Busca pelo Código da Revista 
 - titulo: Busca pelo título da Revista
