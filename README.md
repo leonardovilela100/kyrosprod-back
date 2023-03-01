@@ -23,6 +23,13 @@
 
 <h4>A aplicação estará rodando em http://localhost:8080.</h4>
 
+
+
+
+-----------------------------------------------------------------------------------------------
+
+
+
 <h1> (1) Rota de usuarios </h1>
 
 | Método | URL | Descrição |
@@ -46,19 +53,25 @@
 ```
 <h2>Rota de API para busca paginada </h2>
 
-<p>Esta rota de API é usada para buscar itens paginados, permitindo que o usuário especifique quantos itens por página e qual página ele quer visualizar. Os parâmetros suportados são:</p>
+<p>Esta rota de API é usada para buscar Usuarios paginados, permitindo que o usuário especifique quantos itens por página e qual página ele quer visualizar. Os parâmetros suportados são:</p>
 
 - page: número da página a ser visualizada (padrão: 1)
 - size: quantidade de itens por página (padrão: 10)
 - sortBy: nome do campo a ser usado para ordenar os resultados (padrão: id)
 - sortOrder: direção da ordenação (ascendente ou descendente, padrão: asc)
+<h4>Outros Filtros</h4>
+- ativo: False ou True, para retornar usuarios que estão desativados ou ativados 
+- id: Codigo
+- nomedousuario: Busca pelo nome do usuario 
+- tipo_usuario: Busca pelo tipo do usuario, se ele é professor ou aluno 
 
 <h4>Exemplo de requisição:</h4>
-<p> GET/api/usuarios?page=2&size=20&page=0&ativo=false&id=1&tipo_usuario=professor& </p>
-<p> GET /api/usuarios?page=2&size=20&sortBy=name&sortOrder=desc </p>
+<p> GET/api/usuarios?page=0&size=20&page=0&ativo=false&id=iddosuario&nome=nomedousuario&tipo_usuario=professor </p>
+<p> GET /api/usuarios?page=0&size=20&sortBy=name&sortOrder=desc </p>
 
+-----------------------------------------------------------------------------------------------
 
-<h1> (2) Rota de Livros </h1>
+<h1> (2) Rota da Livros </h1>
 
 | Método | URL | Descrição |
 | -------- | -------- | -------- |
@@ -75,28 +88,150 @@
 
 {
   "titulo": "Java Como Programar",
-  "autor": ", Paul Deitel ",
-  "editora": "Pearson Education do Brasil S.A"
+  "autor": "Paul Deitel ",
+  "editora": "Pearson Education do Brasil S.A",
+  "ano_edicao": "10/05/2016"
 }
 ```
-<h2>Rota de API para busca paginada </h2>
 
-<p>Esta rota de API é usada para buscar itens paginados, permitindo que o usuário especifique quantos itens por página e qual página ele quer visualizar. Os parâmetros suportados são:</p>
+<h2>Rota da API para busca paginada </h2>
 
-- page: número da página a ser visualizada (padrão: 1)
-- size: quantidade de itens por página (padrão: 10)
-- sortBy: nome do campo a ser usado para ordenar os resultados (padrão: id)
-- sortOrder: direção da ordenação (ascendente ou descendente, padrão: asc)
+<p>Esta rota de API é usada para buscar Livros paginados, permitindo que o usuário especifique quantos itens por página e qual página ele quer visualizar. Os parâmetros suportados são:</p>
+
+- page: Número da página a ser visualizada (padrão: 1)
+- size: Quantidade de itens por página (padrão: 10)
+- sortBy: Nome do campo a ser usado para ordenar os resultados (padrão: id)
+- sortOrder: Direção da ordenação (ascendente ou descendente, padrão: asc)
+<h4>Outros Filtros</h4>
+- emprestado:  False ou True, para retornar livros que estão emprestados
+- codigo: Busca pelo Codigo do Livro 
+- titulo: Busca pelo titulo
+- autor: Busca pelo autor do livro
 
 <h4>Exemplo de requisição:</h4>
-<p> GET/api/usuarios?page=2&size=20&page=0&ativo=false&id=1&tipo_usuario=professor& </p>
-<p> GET /api/usuarios?page=2&size=20&sortBy=name&sortOrder=desc </p>
+<p> GET/api/livros?page=0&size=20&page=0&emprestado=false&codigo=codigodolivro&titulo=titulodolivro&autor=autordolivro </p>
+<p> GET /api/livros?page=0&size=20&sortBy=name&sortOrder=desc</p>
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
+<h1> (3) Rota de Ebook </h1>
+
+| Método | URL | Descrição |
+| -------- | -------- | -------- |
+| GET  | /api/ebooks  | Retorna todos os ebooks cadastrados com paginação |
+| POST  | /api/ebooks | 	Cadastra um novo ebook  |
+| PATCH  |	/api/ebooks/ativar/{id} | 	Ativar um ebook  |
+| PATCH  |	/api/ebooks/desativar/{id} | 	Desativar um ebook  |
+| DELETE  |		/api/ebooks/{id} | 	Exclui um ebook específico  |
+
+<h2>Formato do JSON</h2>
+<h3>Cadastrar Ebook</h3>
+
+```json
+
+{
+  "titulo": "Java para Iniciantes",
+  "autor": "Luiz Duarte ",
+  "ano_edicao": "2017",
+  "url": "https://www.amazon.com.br/Java-para-Iniciantes-Luiz-Duarte-ebook/dp/B01MY7VBE5"
+  "numero": 45578,
+}
+```
+
+<h2>Rota da API para busca paginada </h2>
+
+<p>Esta rota de API é usada para buscar Ebooks paginados, permitindo que o usuário especifique quantos itens por página e qual página ele quer visualizar. Os parâmetros suportados são:</p>
+
+- page: Número da página a ser visualizada (padrão: 1)
+- size: Quantidade de itens por página (padrão: 10)
+- sortBy: Nome do campo a ser usado para ordenar os resultados (padrão: id)
+- sortOrder: Direção da ordenação (ascendente ou descendente, padrão: asc)
+<h4>Outros Filtros</h4>
+- emprestado:  False ou True, para retornar ebooks que estão emprestados
+- codigo: Busca pelo Codigo do Ebook 
+- titulo: Busca pelo titulo
+- autor: Busca pelo autor do Ebook
+
+<h4>Exemplo de requisição:</h4>
+<p> GET/api/ebooks?page=0&size=20&page=0&emprestado=false&codigo=codigodoebook&titulo=titulodoebook&autor=autordoebook </p>
+<p> GET /api/ebooks?page=0&size=20&sortBy=name&sortOrder=desc</p>
+
+
+
+-----------------------------------------------------------------------------------------------
+
+<h1> (4) Rota de Revista </h1>
+
+| Método | URL | Descrição |
+| -------- | -------- | -------- |
+| GET  | /api/revistas  | Retorna todos as revistas cadastradas com paginação |
+| POST  | /api/revistas | 	Cadastra uma nova revistas  |
+| PATCH  |	/api/revistas/ativar/{id} | 	Ativar uma revistas  |
+| PATCH  |	/api/revistas/desativar/{id} | 	Desativar uma revistas  |
+| DELETE  |		/api/revistas/{id} | 	Exclui uma revistas específica  |
+
+<h2>Formato do JSON</h2>
+<h3>Cadastrar Revista</h3>
+
+```json
+
+{
+  "titulo": "Revista Programar",
+  "ano_edicao": "2023",
+  "numero": 45578,
+}
+```
+
+<h2>Rota da API para busca paginada </h2>
+
+<p>Esta rota de API é usada para buscar Revistas paginadas, permitindo que o usuário especifique quantos itens por página e qual página ele quer visualizar. Os parâmetros suportados são:</p>
+
+- page: Número da página a ser visualizada (padrão: 1)
+- size: Quantidade de itens por página (padrão: 10)
+- sortBy: Nome do campo a ser usado para ordenar os resultados (padrão: id)
+- sortOrder: Direção da ordenação (ascendente ou descendente, padrão: asc)
+<h4>Outros Filtros</h4>
+- emprestado:  False ou True, para retornar revistas que estão emprestadas
+- codigo: Busca pelo Codigo da Revista 
+- titulo: Busca pelo titulo da Revista
+- ano_edicao: Busca pelo ano da Revista
+<h4>Exemplo de requisição:</h4>
+<p> GET/api/revistas?page=0&size=20&page=0&emprestado=false&codigo=codigodarevista&titulo=titulodarevista&ano_edicao=anodarevista </p>
+<p> GET /api/revistas?page=0&size=20&sortBy=name&sortOrder=desc</p>
+
+-----------------------------------------------------------------------------------------------
 
 
 
 
+<h1> (5) Rota de Emprestimo </h1>
+
+| Método | URL | Descrição |
+| -------- | -------- | -------- |
+| GET  | /api/locacao/emprestimos  | Retorna todos os emprestimos |
+| POST  |/api/locacao/emprestimos | 	Cadastra um novo emprestimo |
+| POST  | /api/locacao/devolucao/{id} | Finaliza o emprestimo do produto  |
+
+<h2>Formato do JSON</h2>
+<h3>Cadastrar um Emprestimo</h3>
+
+```json
+
+{
+  "tipo_produto": "revista",
+  "codigo_produto": "1",
+  "id_usuario": 1,
+}
+```
+<h4>Obs: Envio padrão do codigo_produto: (revista, ebook, livro) </h4>
 
 
+
+
+-----------------------------------------------------------------------------------------------
 
 
 
@@ -104,7 +239,5 @@
 
 
 <h2>Utilizando a API</h2>
-<p>Para utilizar a API, basta acessar a URL http://localhost:8080/api/produtos utilizando uma ferramenta como o Postman ou o cURL.</p>
+<p>Para utilizar a API, basta acessar a URL http://localhost:8080/api/rotas_disponiveis_acima utilizando uma ferramenta como o Postman ou o cURL.</p>
 
-<h2> </h2>
-<p> </p>
