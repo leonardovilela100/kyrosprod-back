@@ -64,13 +64,13 @@
 
  <h4>OUTROS FILTROS </h4>
 
-- ativo: False ou True, para retornar usuários que estão desativados ou ativados 
+- ativo: Retornar usuários que estão desativados ou ativados 
 - id: Codigo
-- nomedousuario: Busca pelo nome do usuário 
+- nome: Busca pelo nome do usuário 
 - tipo_usuario: Busca pelo tipo do usuário, se ele é professor ou aluno 
 
 <h4>Exemplo de requisição:</h4>
-<p> GET/api/usuarios?page=0&size=20&page=0&ativo=false&id=iddosuario&nome=nomedousuario&tipo_usuario=professor </p>
+<p> GET /api/usuarios?ativo=true&tipo_usuario=professor&id=1&nome=João </p>
 <p> GET /api/usuarios?page=0&size=20&sortBy=name&sortOrder=desc </p>
 
 -----------------------------------------------------------------------------------------------
@@ -109,13 +109,13 @@
 
  <h4>OUTROS FILTROS </h4>
 
-- emprestado:  False ou True, para retornar livros emprestados
+- ativo: Retornar livros que estão desativados ou ativados 
 - codigo: Busca pelo Código do Livro 
 - titulo: Busca pelo título
 - autor: Busca pelo autor do livro
 
 <h4>Exemplo de requisição:</h4>
-<p> GET/api/livros?page=0&size=20&page=0&emprestado=false&codigo=codigodolivro&titulo=titulodolivro&autor=autordolivro </p>
+<p> GET /api/livros?titulo=Java&ativo=true&codigo=1&autor=Paul </p>
 <p> GET /api/livros?page=0&size=20&sortBy=name&sortOrder=desc</p>
 
 
@@ -142,8 +142,8 @@
   "titulo": "Java para Iniciantes",
   "autor": "Luiz Duarte ",
   "ano_edicao": "2017",
-  "url": "https://www.amazon.com.br/Java-para-Iniciantes-Luiz-Duarte-ebook/dp/B01MY7VBE5"
-  "numero": 45578,
+  "url": "https://www.amazon.com.br/Java-para-Iniciantes-Luiz-Duarte-ebook/dp/B01MY7VBE5",
+  "numero": 45578
 }
 ```
 
@@ -158,13 +158,13 @@
 
  <h4>OUTROS FILTROS </h4>
 
-- emprestado:  False ou True, para retornar ebooks que estão emprestados
+- ativo: Retornar ebooks que estão desativados ou ativados 
 - codigo: Busca pelo Código do Ebook 
 - titulo: Busca pelo título
 - autor: Busca pelo autor do Ebook
 
 <h4>Exemplo de requisição:</h4>
-<p> GET/api/ebooks?page=0&size=20&page=0&emprestado=false&codigo=codigodoebook&titulo=titulodoebook&autor=autordoebook </p>
+<p> GET /api/ebooks?titulo=Java&ativo=true&codigo=1&autor=Luiz </p>
 <p> GET /api/ebooks?page=0&size=20&sortBy=name&sortOrder=desc</p>
 
 
@@ -189,7 +189,7 @@
 {
   "titulo": "Revista Programar",
   "ano_edicao": "2023",
-  "numero": 45578,
+  "numero": 45578
 }
 ```
 
@@ -204,13 +204,14 @@
 
  <h4>OUTROS FILTROS </h4>
 
-- emprestado:  False ou True, para retornar revistas que estão emprestadas
+- ativo: Retornar revistas que estão desativadas ou ativadas 
 - codigo: Busca pelo Código da Revista 
 - titulo: Busca pelo título da Revista
 - ano_edicao: Busca pelo ano da Revista
+
 <h4>Exemplo de requisição:</h4>
-<p> GET/api/revistas?page=0&size=20&page=0&emprestado=false&codigo=codigodarevista&titulo=titulodarevista&ano_edicao=anodarevista </p>
-<p> GET /api/revistas?page=0&size=20&sortBy=name&sortOrder=desc</p>
+<p> GET /api/revistas?titulo=Programar&ativo=true&codigo=1&ano_edicao=2023 </p>
+<p> GET /api/revistas?page=0&size=20&sortBy=name&sortOrder=desc </p>
 
 -----------------------------------------------------------------------------------------------
 
@@ -222,8 +223,8 @@
 | Método | URL | Descrição |
 | -------- | -------- | -------- |
 | GET  | /api/locacao/emprestimos  | Retorna todos os empréstimos |
-| POST  |/api/locacao/emprestimos | 	Cadastra um novo empréstimo |
-| POST  | /api/locacao/devolucao/{id} | Finaliza o empréstimo do produto  |
+| POST  | /api/locacao/emprestimos | 	Cadastra um novo empréstimo |
+| POST  | /api/locacao/devolucao/{id} | Finaliza o empréstimo do produto {id} do emprestimo  |
 
 <h2>Formato do JSON</h2>
 <h3>Cadastrar um Empréstimo</h3>
@@ -244,9 +245,5 @@
 -----------------------------------------------------------------------------------------------
 
 
-
-
-
-
 <h2>Utilizando a API</h2>
-<p>Para utilizar a API, basta acessar a URL http://localhost:8080/api/rotas_disponiveis_acima utilizando uma ferramenta como o Postman ou o cURL.</p>
+<h3>Para utilizar a API, basta acessar a URL http://localhost:8080/api/rotas_disponiveis_acima utilizando uma ferramenta como o Postman ou o cURL. </h3>
