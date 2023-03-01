@@ -19,7 +19,13 @@
 
 <h2>Executando a Aplicação</h2>
 <p>Para executar a aplicação, basta executar o seguinte comando:</p>
-<p>java -jar target/nome-do-projeto.jar</p>
+
+<p>java -jar target/nome-do-projeto.jar </p>
+
+
+
+
+
 
 <h4>A aplicação estará rodando em http://localhost:8080.</h4>
 
