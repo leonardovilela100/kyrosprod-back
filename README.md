@@ -19,11 +19,7 @@
 
 <h2>Executando a Aplicação</h2>
 <p>Para executar a aplicação, basta executar o seguinte comando:</p>
-
 <p>java -jar target/nome-do-projeto.jar </p>
-
-
-
 
 
 
