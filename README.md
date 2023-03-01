@@ -14,7 +14,7 @@
 <p>Execute o comando mvn install para compilar e empacotar o projeto</p>
 
 <h2>Configuração do Banco de Dados</h2>
-<p>O banco de dados utilizado neste projeto é o H2. Ele é um banco de dados em memória, que é criado e populado automaticamente durante a inicialização da aplicação</p>
+<p>O banco de dados utilizado neste projeto é o H2. Ele é um banco de dados em memória, o qual é criado e populado automaticamente durante a inicialização da aplicação</p>
 
 
 <h2>Executando a Aplicação</h2>
@@ -30,18 +30,18 @@
 
 
 
-<h1> (1) Rota de usuarios </h1>
+<h1> (1) Rota de Usuários </h1>
 
 | Método | URL | Descrição |
 | -------- | -------- | -------- |
-| GET  | /api/usuarios  | Retorna todos os usuarios cadastrados com paginação|
-| POST  | /api/usuarios | 	Cadastra um novo usuario  |
-| PATCH  |	/api/usuarios/ativar/{id} | 	Ativar um usuario  |
-| PATCH  |	/api/usuarios/desativar/{id} | 	Desativar um usuario  |
-| DELETE  |		/api/usuarios/{id} | 	Exclui um usuario específico  |
+| GET  | /api/usuarios  | Retorna todos os usuários cadastrados com paginação|
+| POST  | /api/usuarios | 	Cadastra um novo usuário  |
+| PATCH  |	/api/usuarios/ativar/{id} | 	Ativar um usuário  |
+| PATCH  |	/api/usuarios/desativar/{id} | 	Desativar um usuário  |
+| DELETE  |		/api/usuarios/{id} | 	Exclui um usuário específico  |
 
 <h2>Formato do JSON</h2>
-<h3>Cadastrar Usuario</h3>
+<h3>Cadastrar Usuário</h3>
 
 ```json
 
@@ -53,17 +53,17 @@
 ```
 <h2>Rota de API para busca paginada </h2>
 
-<p>Esta rota de API é usada para buscar Usuarios paginados, permitindo que o usuário especifique quantos itens por página e qual página ele quer visualizar. Os parâmetros suportados são:</p>
+<p>Esta rota de API é usada para buscar Usuários paginados, permitindo que o usuário especifique quantos itens por página e qual página ele quer visualizar. Os parâmetros suportados são:</p>
 
 - page: número da página a ser visualizada (padrão: 1)
 - size: quantidade de itens por página (padrão: 10)
 - sortBy: nome do campo a ser usado para ordenar os resultados (padrão: id)
 - sortOrder: direção da ordenação (ascendente ou descendente, padrão: asc)
 <h4>Outros Filtros</h4>
-- ativo: False ou True, para retornar usuarios que estão desativados ou ativados 
+- ativo: False ou True, para retornar usuários que estão desativados ou ativados 
 - id: Codigo
-- nomedousuario: Busca pelo nome do usuario 
-- tipo_usuario: Busca pelo tipo do usuario, se ele é professor ou aluno 
+- nomedousuario: Busca pelo nome do usuário 
+- tipo_usuario: Busca pelo tipo do usuário, se ele é professor ou aluno 
 
 <h4>Exemplo de requisição:</h4>
 <p> GET/api/usuarios?page=0&size=20&page=0&ativo=false&id=iddosuario&nome=nomedousuario&tipo_usuario=professor </p>
@@ -71,7 +71,7 @@
 
 -----------------------------------------------------------------------------------------------
 
-<h1> (2) Rota da Livros </h1>
+<h1> (2) Rota do livro </h1>
 
 | Método | URL | Descrição |
 | -------- | -------- | -------- |
@@ -103,9 +103,9 @@
 - sortBy: Nome do campo a ser usado para ordenar os resultados (padrão: id)
 - sortOrder: Direção da ordenação (ascendente ou descendente, padrão: asc)
 <h4>Outros Filtros</h4>
-- emprestado:  False ou True, para retornar livros que estão emprestados
-- codigo: Busca pelo Codigo do Livro 
-- titulo: Busca pelo titulo
+- emprestado:  False ou True, para retornar livros emprestados
+- codigo: Busca pelo Código do Livro 
+- titulo: Busca pelo título
 - autor: Busca pelo autor do livro
 
 <h4>Exemplo de requisição:</h4>
@@ -151,8 +151,8 @@
 - sortOrder: Direção da ordenação (ascendente ou descendente, padrão: asc)
 <h4>Outros Filtros</h4>
 - emprestado:  False ou True, para retornar ebooks que estão emprestados
-- codigo: Busca pelo Codigo do Ebook 
-- titulo: Busca pelo titulo
+- codigo: Busca pelo Código do Ebook 
+- titulo: Busca pelo título
 - autor: Busca pelo autor do Ebook
 
 <h4>Exemplo de requisição:</h4>
@@ -169,9 +169,9 @@
 | -------- | -------- | -------- |
 | GET  | /api/revistas  | Retorna todos as revistas cadastradas com paginação |
 | POST  | /api/revistas | 	Cadastra uma nova revistas  |
-| PATCH  |	/api/revistas/ativar/{id} | 	Ativar uma revistas  |
-| PATCH  |	/api/revistas/desativar/{id} | 	Desativar uma revistas  |
-| DELETE  |		/api/revistas/{id} | 	Exclui uma revistas específica  |
+| PATCH  |	/api/revistas/ativar/{id} | 	Ativar uma revista  |
+| PATCH  |	/api/revistas/desativar/{id} | 	Desativar uma revista  |
+| DELETE  |		/api/revistas/{id} | 	Exclui uma revista específica  |
 
 <h2>Formato do JSON</h2>
 <h3>Cadastrar Revista</h3>
@@ -195,8 +195,8 @@
 - sortOrder: Direção da ordenação (ascendente ou descendente, padrão: asc)
 <h4>Outros Filtros</h4>
 - emprestado:  False ou True, para retornar revistas que estão emprestadas
-- codigo: Busca pelo Codigo da Revista 
-- titulo: Busca pelo titulo da Revista
+- codigo: Busca pelo Código da Revista 
+- titulo: Busca pelo título da Revista
 - ano_edicao: Busca pelo ano da Revista
 <h4>Exemplo de requisição:</h4>
 <p> GET/api/revistas?page=0&size=20&page=0&emprestado=false&codigo=codigodarevista&titulo=titulodarevista&ano_edicao=anodarevista </p>
@@ -207,16 +207,16 @@
 
 
 
-<h1> (5) Rota de Emprestimo </h1>
+<h1> (5) Rota de Empréstimo </h1>
 
 | Método | URL | Descrição |
 | -------- | -------- | -------- |
-| GET  | /api/locacao/emprestimos  | Retorna todos os emprestimos |
-| POST  |/api/locacao/emprestimos | 	Cadastra um novo emprestimo |
-| POST  | /api/locacao/devolucao/{id} | Finaliza o emprestimo do produto  |
+| GET  | /api/locacao/emprestimos  | Retorna todos os empréstimos |
+| POST  |/api/locacao/emprestimos | 	Cadastra um novo empréstimo |
+| POST  | /api/locacao/devolucao/{id} | Finaliza o empréstimo do produto  |
 
 <h2>Formato do JSON</h2>
-<h3>Cadastrar um Emprestimo</h3>
+<h3>Cadastrar um Empréstimo</h3>
 
 ```json
 
@@ -226,7 +226,7 @@
   "id_usuario": 1,
 }
 ```
-<h4>Obs: Envio padrão do codigo_produto: (revista, ebook, livro) </h4>
+<h4>“Obs”: Envio padrão do codigo_produto: (revista, ebook, livro) </h4>
 
 
 
@@ -240,4 +240,3 @@
 
 <h2>Utilizando a API</h2>
 <p>Para utilizar a API, basta acessar a URL http://localhost:8080/api/rotas_disponiveis_acima utilizando uma ferramenta como o Postman ou o cURL.</p>
-
