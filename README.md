@@ -25,12 +25,13 @@
 
 
 
-<h4>A aplicação estará rodando em http://localhost:8080.</h4>
+<h3>A aplicação estará rodando em http://localhost:8080.</h3>
 
-<h4>A aplicação do banco estará rodando em http://localhost:8080/h2-console </h4>
+<h3>A aplicação do banco estará rodando em http://localhost:8080/h2-console </h3>
 <p>Visualizar em seu terminal a seguinte mensagem: HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:85d855ac-d76c-43b3-aec2-ef70e1016168 user=SA </p>
+
 - No campo (Driver Class:) informar (org.h2.Driver) 
-- No campo (JDBC URL:) informar (jdbc:h2:mem:85d855ac-d76c-43b3-aec2-ef70e1016168) (OBS: em Execução a url informada muda então atentar-se a isso.)
+- No campo (JDBC URL:) informar (jdbc:h2:mem:85d855ac-d76c-43b3-aec2-ef70e1016168) (OBS: Em cada Start da execução a url informada mudara então atentar-se a isso.)
 - No campo (User Name:) informar (SA) 
 - No campo (Password:	) informar (Deixar o campo vazio) 
 
