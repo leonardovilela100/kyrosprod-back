@@ -88,9 +88,6 @@ public class Emprestimo implements Serializable {
 	@JoinColumn(name = "usuario", insertable = false, updatable = false)
 	private Usuario usuario;
 
-	public Emprestimo() {
-	}
-
 	public Long getId() {
 		return id;
 	}
