@@ -20,19 +20,19 @@ import br.com.kyros.model.Ebook;
 import br.com.kyros.services.EbookService;
 
 @RestController
-@RequestMapping("/ebooks")
+@RequestMapping("/api/ebooks")
 public class EbookController {
 
 	@Autowired
 	private EbookService ebookService;
 
 	@GetMapping
-	public Page<Ebook> buscarEbooks(@RequestParam(required = false) Boolean ativo,@RequestParam(required = false) Long codigo,
-			@RequestParam(required = false) String titulo, @RequestParam(required = false) String autor,
-			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size,
-			@RequestParam(defaultValue = "codigo") String sort) {
+	public Page<Ebook> buscarEbooks(@RequestParam(required = false) Boolean ativo,
+			@RequestParam(required = false) Long codigo, @RequestParam(required = false) String titulo,
+			@RequestParam(required = false) String autor, @RequestParam(defaultValue = "0") int page,
+			@RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "codigo") String sort) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.by(sort));
-		return ebookService.buscarEbooks(codigo, titulo, autor,ativo, pageRequest);
+		return ebookService.buscarEbooks(codigo, titulo, autor, ativo, pageRequest);
 	}
 
 	@PostMapping
@@ -53,7 +53,7 @@ public class EbookController {
 		ebookService.ativarEbook(codigo);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void deletarEbook(@PathVariable Long id) {
 		ebookService.deletarEbook(id);

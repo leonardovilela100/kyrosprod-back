@@ -37,10 +37,10 @@ public class Emprestimo implements Serializable {
 
 	@Column(name = "data_prevista_devolucao", nullable = false)
 	private LocalDate dataPrevistaDevolucao;
-	
+
 	@Column(name = "data_devolucao")
 	private LocalDate dataDevolucao;
-	
+
 	@Column(name = "multa")
 	private Boolean multa;
 
@@ -55,7 +55,7 @@ public class Emprestimo implements Serializable {
 
 	@Column(name = "id_usuario", nullable = false)
 	private Long id_usuario;
-	
+
 	@Column(name = "cpf_usuario", nullable = false)
 	private String cpf_usuario;
 
@@ -64,8 +64,6 @@ public class Emprestimo implements Serializable {
 
 	@Column(name = "titulo_produto", nullable = false)
 	private String titulo_produto;
-	
-	
 
 	@Column(name = "nome_usuario", nullable = false)
 	private String nome_usuario;
@@ -93,211 +91,141 @@ public class Emprestimo implements Serializable {
 	public Emprestimo() {
 	}
 
-	
-
 	public Long getId() {
 		return id;
 	}
-
-
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-
-
 	public LocalDate getDataEmprestimo() {
 		return dataEmprestimo;
 	}
-
-
 
 	public void setDataEmprestimo(LocalDate dataEmprestimo) {
 		this.dataEmprestimo = dataEmprestimo;
 	}
 
-
-
 	public LocalDate getDataPrevistaDevolucao() {
 		return dataPrevistaDevolucao;
 	}
-
-
 
 	public void setDataPrevistaDevolucao(LocalDate dataPrevistaDevolucao) {
 		this.dataPrevistaDevolucao = dataPrevistaDevolucao;
 	}
 
-
-
 	public LocalDate getDataDevolucao() {
 		return dataDevolucao;
 	}
-
-
 
 	public void setDataDevolucao(LocalDate dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
 
-
-
 	public Boolean getMulta() {
 		return multa;
 	}
-
-
 
 	public void setMulta(Boolean multa) {
 		this.multa = multa;
 	}
 
-
-
 	public String getTipo() {
 		return tipo;
 	}
-
-
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 
-
-
 	public Boolean getAtivo() {
 		return ativo;
 	}
-
-
 
 	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 
-
-
 	public Long getCodigo() {
 		return codigo;
 	}
-
-
 
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 
-
-
 	public Long getId_usuario() {
 		return id_usuario;
 	}
-
-
 
 	public void setId_usuario(Long id_usuario) {
 		this.id_usuario = id_usuario;
 	}
 
-
-
 	public String getCpf_usuario() {
 		return cpf_usuario;
 	}
-
-
 
 	public void setCpf_usuario(String cpf_usuario) {
 		this.cpf_usuario = cpf_usuario;
 	}
 
-
-
 	public String getTipo_usuario() {
 		return tipo_usuario;
 	}
-
-
 
 	public void setTipo_usuario(String tipo_usuario) {
 		this.tipo_usuario = tipo_usuario;
 	}
 
-
-
 	public String getTitulo_produto() {
 		return titulo_produto;
 	}
-
-
 
 	public void setTitulo_produto(String titulo_produto) {
 		this.titulo_produto = titulo_produto;
 	}
 
-
-
 	public String getNome_usuario() {
 		return nome_usuario;
 	}
-
-
 
 	public void setNome_usuario(String nome_usuario) {
 		this.nome_usuario = nome_usuario;
 	}
 
-
-
 	public Livro getLivro() {
 		return livro;
 	}
-
-
 
 	public void setLivro(Livro livro) {
 		this.livro = livro;
 	}
 
-
-
 	public Revista getRevista() {
 		return revista;
 	}
-
-
 
 	public void setRevista(Revista revista) {
 		this.revista = revista;
 	}
 
-
-
 	public Ebook getEbook() {
 		return ebook;
 	}
-
-
 
 	public void setEbook(Ebook ebook) {
 		this.ebook = ebook;
 	}
 
-
-
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
-
-
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -325,10 +253,5 @@ public class Emprestimo implements Serializable {
 				&& Objects.equals(tipo_usuario, other.tipo_usuario)
 				&& Objects.equals(titulo_produto, other.titulo_produto) && Objects.equals(usuario, other.usuario);
 	}
-
-
-
-	
-	
 
 }

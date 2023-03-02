@@ -16,7 +16,7 @@ import br.com.kyros.model.Emprestimo;
 import br.com.kyros.services.EmprestimoService;
 
 @RestController
-@RequestMapping("/locacao")
+@RequestMapping("/api/locacao")
 public class EmprestimoController {
 
 	@Autowired
@@ -35,16 +35,15 @@ public class EmprestimoController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(devolver);
 
 	}
-	
-	
+
 	@GetMapping("/emprestimos")
 	public ResponseEntity<List<Emprestimo>> buscarTodosEmprestimos() {
-	    List<Emprestimo> emprestimos = emprestimoService.buscarTodosEmprestimos();
-	    if (emprestimos.isEmpty()) {
-	        return ResponseEntity.noContent().build();
-	    } else {
-	        return ResponseEntity.ok(emprestimos);
-	    }
+		List<Emprestimo> emprestimos = emprestimoService.buscarTodosEmprestimos();
+		if (emprestimos.isEmpty()) {
+			return ResponseEntity.noContent().build();
+		} else {
+			return ResponseEntity.ok(emprestimos);
+		}
 	}
 
 }

@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -35,10 +38,13 @@ public class LivroServiceTest {
 	@Test
 	public void criarLivroTest() {
 		Livro livro = new Livro();
+		livro.setCodigo(1L);
 		livro.setTitulo("Livro de Teste");
 		livro.setAutor("Autor de Teste");
 		livro.setEditora("Editora de Teste");
 		livro.setAno_edicao("2022");
+		livro.setEmprestado(false);
+		livro.setAtivo(true);
 
 		Mockito.when(livroRepository.save(Mockito.any(Livro.class))).thenReturn(livro);
 
@@ -49,18 +55,15 @@ public class LivroServiceTest {
 		assertEquals(livro.getAutor(), livroCriado.getAutor());
 		assertEquals(livro.getEditora(), livroCriado.getEditora());
 		assertEquals(livro.getAno_edicao(), livroCriado.getAno_edicao());
+		assertEquals(livro.getEmprestado(), livroCriado.getEmprestado());
+		assertEquals(livro.isAtivo(), livroCriado.isAtivo());
 	}
 
 	@Test
 	public void desativarLivroTest() {
 		Long codigo = 1L;
 		Livro livro = new Livro();
-		livro.setCodigo(codigo);
-		livro.setTitulo("Livro de Teste");
-		livro.setAutor("Autor de Teste");
-		livro.setEditora("Editora de Teste");
-		livro.setAno_edicao("2022");
-		livro.setAtivo(true);
+		livro.setAtivo(false);
 
 		Mockito.when(livroRepository.findById(codigo)).thenReturn(Optional.of(livro));
 
@@ -74,12 +77,8 @@ public class LivroServiceTest {
 	public void ativarLivroTest() {
 		Long codigo = 1L;
 		Livro livro = new Livro();
-		livro.setCodigo(codigo);
-		livro.setTitulo("Livro de Teste");
-		livro.setAutor("Autor de Teste");
-		livro.setEditora("Editora de Teste");
-		livro.setAno_edicao("2022");
-		livro.setAtivo(false);
+
+		livro.setAtivo(true);
 
 		Mockito.when(livroRepository.findById(codigo)).thenReturn(Optional.of(livro));
 
@@ -98,10 +97,21 @@ public class LivroServiceTest {
 		PageRequest pageRequest = PageRequest.of(0, 10);
 
 		Page<Livro> pageLivros = new PageImpl<>(Arrays.asList(new Livro()));
-		Mockito.when(livroRepository.buscarLivros(Mockito.eq(codigo), Mockito.eq(titulo), Mockito.eq(autor), Mockito.eq(ativo), Mockito.any(PageRequest.class))).thenReturn(pageLivros);
+		Mockito.when(livroRepository.buscarLivros(Mockito.eq(codigo), Mockito.eq(titulo), Mockito.eq(autor),
+				Mockito.eq(ativo), Mockito.any(PageRequest.class))).thenReturn(pageLivros);
 
 		Page<Livro> pageLivrosEncontrados = livroService.buscarLivros(codigo, titulo, autor, ativo, pageRequest);
 
 		assertNotNull(pageLivrosEncontrados);
 	}
+
+	@Test
+	public void deletarLivroTest() {
+		doNothing().when(livroRepository).deleteById(1L);
+
+		livroService.deletarLivro(1L);
+
+		verify(livroRepository, times(1)).deleteById(1L);
+	}
+
 }

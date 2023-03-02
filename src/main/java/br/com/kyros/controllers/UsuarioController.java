@@ -20,7 +20,7 @@ import br.com.kyros.model.Usuario;
 import br.com.kyros.services.UsuarioService;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/api/usuarios")
 public class UsuarioController {
 
 	@Autowired
@@ -53,7 +53,7 @@ public class UsuarioController {
 		usuarioService.ativarUsuario(id);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void deletarUsuario(@PathVariable Long id) {
 		usuarioService.deletarUsuario(id);

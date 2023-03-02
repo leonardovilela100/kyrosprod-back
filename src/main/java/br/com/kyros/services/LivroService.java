@@ -38,14 +38,12 @@ public class LivroService {
 		}
 	}
 
-
-	public Page<Livro> buscarLivros(Long codigo, String titulo, String autor,Boolean ativo, PageRequest pageRequest) {
-		return livroRepository.buscarLivros(codigo, titulo, autor,ativo, pageRequest);
+	public Page<Livro> buscarLivros(Long codigo, String titulo, String autor, Boolean ativo, PageRequest pageRequest) {
+		return livroRepository.buscarLivros(codigo, titulo, autor, ativo, pageRequest);
 	}
-	
+
 	public void deletarLivro(Long id) {
 		livroRepository.deleteById(id);
 	}
-
 
 }

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @SpringBootApplication
-@EntityScan(basePackages = {"br.com.kyros.model"})
-@ComponentScan(basePackages = {"br.*"})
+@EntityScan(basePackages = { "br.com.kyros.model" })
+@ComponentScan(basePackages = { "br.*" })
 @EnableJpaRepositories(basePackages = "br.com.kyros.repositories")
 @EnableTransactionManagement
 @EnableWebMvc
@@ -22,8 +22,7 @@ public class Startup {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Startup.class, args);
-		
-		System.out.println("Sistema Rodando corretamente");
+
 	}
 
 }

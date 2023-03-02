@@ -41,10 +41,9 @@ public class EbookService {
 	public Page<Ebook> buscarEbooks(Long codigo, String titulo, String autor, Boolean ativo, PageRequest pageRequest) {
 		return ebookRepository.buscarEbooks(codigo, titulo, autor, ativo, pageRequest);
 	}
-	
+
 	public void deletarEbook(Long id) {
 		ebookRepository.deleteById(id);
 	}
-
 
 }

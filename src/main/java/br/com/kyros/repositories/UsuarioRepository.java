@@ -16,6 +16,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 			+ "AND (:ativo is null or l.ativo = :ativo)")
 
 	public Page<Usuario> buscarUsuarios(@Param("id") Long id, @Param("nome") String nome,
-			@Param("tipo_usuario") String tipo_usuario,@Param("ativo") Boolean ativo, PageRequest pageRequest);
+			@Param("tipo_usuario") String tipo_usuario, @Param("ativo") Boolean ativo, PageRequest pageRequest);
 }
-

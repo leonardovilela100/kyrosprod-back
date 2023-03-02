@@ -59,27 +59,30 @@ public class EmprestimoService {
 		switch (tipo) {
 		case "livro":
 			Livro livro = livroRepository.findById(codigo).orElseThrow(() -> new NotFoundException());
-			if (livro.isAtivo() == false) {
+			if (livro.isAtivo() == false && livro.getEmprestado() == true) {
 				throw new Exception("Livro já emprestado");
 			}
 			livro.setAtivo(false);
+			livro.setEmprestado(true);
 			emprestimo.setTitulo_produto(livro.getTitulo());
 			livroRepository.save(livro);
 			break;
 		case "revista":
 			Revista revista = revistaRepository.findById(codigo).orElseThrow(() -> new NotFoundException());
-			if (revista.isAtivo() == false) {
+			if (revista.isAtivo() == false && revista.getEmprestado() == true) {
 				throw new Exception("Revista já emprestado");
 			}
 			revista.setAtivo(false);
+			revista.setEmprestado(true);
 			emprestimo.setTitulo_produto(revista.getTitulo());
 			revistaRepository.save(revista);
 			break;
 		case "ebook":
 			Ebook ebook = ebookRepository.findById(codigo).orElseThrow(() -> new NotFoundException());
-			if (ebook.isAtivo() == false) {
+			if (ebook.isAtivo() == false && ebook.getEmprestado() == true) {
 				throw new Exception("Ebook já emprestado");
 			}
+			ebook.setEmprestado(true);
 			ebook.setAtivo(false);
 			emprestimo.setTitulo_produto(ebook.getTitulo());
 			ebookRepository.save(ebook);
@@ -96,8 +99,6 @@ public class EmprestimoService {
 		Optional<Emprestimo> devolverid = emprestimoRepository.findById(id);
 
 		Emprestimo devolver = devolverid.get();
-		
-		
 
 		devolver.setAtivo(false);
 		devolver.setDataDevolucao(LocalDate.now());
@@ -105,7 +106,7 @@ public class EmprestimoService {
 		if (devolver.getDataPrevistaDevolucao() != null
 				&& devolver.getDataPrevistaDevolucao().isBefore(LocalDate.now())) {
 			devolver.setMulta(true);
-			
+
 		} else {
 			devolver.setMulta(false);
 		}
@@ -115,15 +116,18 @@ public class EmprestimoService {
 			Livro livro = livroRepository.findById(devolver.getCodigo()).orElseThrow(() -> new NotFoundException());
 			if (livro.isAtivo() == false) {
 				livro.setAtivo(true);
+				livro.setEmprestado(false);
 				livroRepository.save(livro);
 			} else {
 				throw new Exception("Livro não está emprestado");
 			}
 			break;
 		case "revista":
-			Revista revista = revistaRepository.findById(devolver.getCodigo()).orElseThrow(() -> new NotFoundException());
+			Revista revista = revistaRepository.findById(devolver.getCodigo())
+					.orElseThrow(() -> new NotFoundException());
 			if (revista.isAtivo() == false) {
 				revista.setAtivo(true);
+				revista.setEmprestado(false);
 				revistaRepository.save(revista);
 			} else {
 				throw new Exception("Livro não está emprestado");
@@ -134,6 +138,7 @@ public class EmprestimoService {
 			Ebook ebook = ebookRepository.findById(devolver.getCodigo()).orElseThrow(() -> new NotFoundException());
 			if (ebook.isAtivo() == false) {
 				ebook.setAtivo(true);
+				ebook.setEmprestado(false);
 				ebookRepository.save(ebook);
 			} else {
 				throw new Exception("Ebook não está emprestado");
@@ -146,10 +151,9 @@ public class EmprestimoService {
 
 		return emprestimoRepository.save(devolver);
 	}
-	
+
 	public List<Emprestimo> buscarTodosEmprestimos() {
-	    return emprestimoRepository.findAll();
+		return emprestimoRepository.findAll();
 	}
-	
-  
+
 }

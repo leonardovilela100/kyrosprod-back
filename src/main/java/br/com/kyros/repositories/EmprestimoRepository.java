@@ -6,6 +6,4 @@ import br.com.kyros.model.Emprestimo;
 
 public interface EmprestimoRepository extends JpaRepository<Emprestimo, Long> {
 
-	
-	
 }

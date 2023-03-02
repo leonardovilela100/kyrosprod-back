@@ -13,30 +13,31 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "livro")
 public class Livro implements Serializable {
-	
-	 private static final long serialVersionUID = 1L;
-	 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = true)
-    private Long codigo;
-    
-    @Column(nullable = false)
-    private String titulo;
-    
-    @Column(nullable = false)
-    private String autor;
-    
-    @Column(nullable = false)
-    private String editora;
-    
-    @Column(nullable = false)
-    private String ano_edicao;
-    
-    @Column(nullable = false)
-    private boolean ativo = true;
-    
-    
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(nullable = true)
+	private Long codigo;
+
+	@Column(nullable = false)
+	private String titulo;
+
+	@Column(nullable = false)
+	private String autor;
+
+	@Column(nullable = false)
+	private String editora;
+
+	@Column(nullable = false)
+	private String ano_edicao;
+
+	@Column(nullable = false)
+	private boolean ativo = true;
+
+	@Column(name = "emprestado")
+	private Boolean emprestado = false;
 
 	public Livro() {
 	}
@@ -81,8 +82,6 @@ public class Livro implements Serializable {
 		this.ano_edicao = ano_edicao;
 	}
 
-	
-
 	public boolean isAtivo() {
 		return ativo;
 	}
@@ -91,9 +90,17 @@ public class Livro implements Serializable {
 		this.ativo = ativo;
 	}
 
+	public Boolean getEmprestado() {
+		return emprestado;
+	}
+
+	public void setEmprestado(Boolean emprestado) {
+		this.emprestado = emprestado;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(ano_edicao, ativo, autor, codigo, editora, titulo);
+		return Objects.hash(ano_edicao, ativo, autor, codigo, editora, emprestado, titulo);
 	}
 
 	@Override
@@ -107,11 +114,8 @@ public class Livro implements Serializable {
 		Livro other = (Livro) obj;
 		return Objects.equals(ano_edicao, other.ano_edicao) && ativo == other.ativo
 				&& Objects.equals(autor, other.autor) && Objects.equals(codigo, other.codigo)
-				&& Objects.equals(editora, other.editora) && Objects.equals(titulo, other.titulo);
+				&& Objects.equals(editora, other.editora) && Objects.equals(emprestado, other.emprestado)
+				&& Objects.equals(titulo, other.titulo);
 	}
 
-
-    
-    
-    
 }

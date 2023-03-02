@@ -25,13 +25,13 @@ public class Usuario implements Serializable {
 
 	@Column(nullable = false)
 	private String tipo_usuario;
-	
-	@Column(nullable = false , unique = true, length = 30)
+
+	@Column(nullable = false, unique = true, length = 30)
 	private String cpf;
 
 	@Column(nullable = false)
 	private boolean ativo = true;
-	
+
 	public Usuario() {
 	}
 
@@ -66,8 +66,6 @@ public class Usuario implements Serializable {
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	
-	
 
 	public String getCpf() {
 		return cpf;
@@ -94,9 +92,5 @@ public class Usuario implements Serializable {
 		return ativo == other.ativo && Objects.equals(cpf, other.cpf) && Objects.equals(id, other.id)
 				&& Objects.equals(nome, other.nome) && Objects.equals(tipo_usuario, other.tipo_usuario);
 	}
-
-
-	
-	
 
 }

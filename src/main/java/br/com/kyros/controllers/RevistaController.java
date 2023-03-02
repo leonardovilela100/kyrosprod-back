@@ -20,7 +20,7 @@ import br.com.kyros.model.Revista;
 import br.com.kyros.services.RevistaService;
 
 @RestController
-@RequestMapping("/revistas")
+@RequestMapping("/api/revistas")
 public class RevistaController {
 
 	@Autowired
@@ -32,7 +32,7 @@ public class RevistaController {
 			@RequestParam(required = false) String ano_edicao, @RequestParam(defaultValue = "0") int page,
 			@RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "codigo") String sort) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.by(sort));
-		return revistaService.buscarRevistas(codigo, titulo, ano_edicao,ativo, pageRequest);
+		return revistaService.buscarRevistas(codigo, titulo, ano_edicao, ativo, pageRequest);
 	}
 
 	@PostMapping
@@ -53,7 +53,7 @@ public class RevistaController {
 		revistaService.ativarRevista(codigo);
 		return ResponseEntity.noContent().build();
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void deletarRevista(@PathVariable Long id) {
 		revistaService.deletarRevista(id);

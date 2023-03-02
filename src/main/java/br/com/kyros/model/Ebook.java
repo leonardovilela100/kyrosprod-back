@@ -39,6 +39,9 @@ public class Ebook implements Serializable {
 	@Column(nullable = false)
 	private boolean ativo = true;
 
+	@Column(name = "emprestado")
+	private Boolean emprestado = false;
+
 	public Ebook() {
 	}
 
@@ -98,9 +101,17 @@ public class Ebook implements Serializable {
 		this.ativo = ativo;
 	}
 
+	public Boolean getEmprestado() {
+		return emprestado;
+	}
+
+	public void setEmprestado(Boolean emprestado) {
+		this.emprestado = emprestado;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(ano_edicao, ativo, autor, codigo, numero, titulo, url);
+		return Objects.hash(ano_edicao, ativo, autor, codigo, emprestado, numero, titulo, url);
 	}
 
 	@Override
@@ -114,8 +125,8 @@ public class Ebook implements Serializable {
 		Ebook other = (Ebook) obj;
 		return Objects.equals(ano_edicao, other.ano_edicao) && ativo == other.ativo
 				&& Objects.equals(autor, other.autor) && Objects.equals(codigo, other.codigo)
-				&& Objects.equals(numero, other.numero) && Objects.equals(titulo, other.titulo)
-				&& Objects.equals(url, other.url);
+				&& Objects.equals(emprestado, other.emprestado) && Objects.equals(numero, other.numero)
+				&& Objects.equals(titulo, other.titulo) && Objects.equals(url, other.url);
 	}
 
 }

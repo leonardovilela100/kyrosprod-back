@@ -20,7 +20,7 @@ import br.com.kyros.model.Livro;
 import br.com.kyros.services.LivroService;
 
 @RestController
-@RequestMapping("/livros")
+@RequestMapping("/api/livros")
 public class LivroController {
 
 	@Autowired
