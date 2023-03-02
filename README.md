@@ -255,8 +255,8 @@
 
 
 <h2>Utilizando a API</h2>
-<h4>Para utilizar a API via GET, basta acessar a URL: http://localhost:8080/api/usuarios, (http://localhost:8080/api/livros), (http://localhost:8080/api/revistas), (http://localhost:8080/api/ebooks), (http://localhost:8080/api/locacao/emprestimos), utilizando uma ferramenta como o Postman ou o cURL. </h4>
+<h4>Para utilizar a API via *GET*, basta acessar a URL: http://localhost:8080/api/usuarios, (http://localhost:8080/api/livros), (http://localhost:8080/api/revistas), (http://localhost:8080/api/ebooks), (http://localhost:8080/api/locacao/emprestimos), utilizando uma ferramenta como o Postman ou o cURL. </h4>
 
-<h2> Para uma utilização mais simples da API, foi disponibilizado a exportação de um aquivo chamado (API Kyros.postman_collection.json) para ser importado em seu Postman e ter as rotas já definidas e configuradas. </h2>
+<h2> Para uma utilização mais simples da API, foi disponibilizado um aquivo chamado (API Kyros.postman_collection.json) para ser importado em seu Postman e ter as rotas já definidas e configuradas. </h2>
 
 
