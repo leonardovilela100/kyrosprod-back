@@ -6,10 +6,10 @@
 <p>Maven instalado</p>
 
 <h2>Como rodar o projeto?</h2>
-<p>Antes de tudo, é necessário ter instalado na sua máquina o Java 11 e o Maven. Em seguida, siga os seguintes passos:<p>
+<p>Antes de tudo, é necessário ter instalado na sua máquina o Java 11 ou superior e o Maven. Em seguida, siga os seguintes passos:<p>
 
 <h2>Instalação</h2>
-<p>Clone o repositório: git clone https://github.com/seu-usuario/nome-do-projeto.git</p>
+<p>Clone o repositório: git clone https://github.com/leonardovilela100/kyrosprod-back.git</p>
 <p>Acesse o diretório do projeto: cd nome-do-projeto</p>
 <p>Execute o comando mvn install para compilar e empacotar o projeto</p>
 
@@ -17,14 +17,22 @@
 <p>O banco de dados utilizado neste projeto é o H2. Ele é um banco de dados em memória, o qual é criado e populado automaticamente durante a inicialização da aplicação</p>
 
 
+
+
 <h2>Executando a Aplicação</h2>
 <p>Para executar a aplicação, basta executar o seguinte comando:</p>
-<p>java -jar target/nome-do-projeto.jar </p>
+<p>java -jar target/kyrosprod-back.jar </p>
 
 
 
 <h4>A aplicação estará rodando em http://localhost:8080.</h4>
 
+<h4>A aplicação do banco estará rodando em http://localhost:8080/h2-console </h4>
+<p>Visualizar em seu terminal a seguinte mensagem: HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:85d855ac-d76c-43b3-aec2-ef70e1016168 user=SA </p>
+- No campo (Driver Class:) informar (org.h2.Driver) 
+- No campo (JDBC URL:) informar (jdbc:h2:mem:85d855ac-d76c-43b3-aec2-ef70e1016168) (OBS: em Execução a url informada muda então atentar-se a isso.)
+- No campo (User Name:) informar (SA) 
+- No campo (Password:	) informar (Deixar o campo vazio) 
 
 
 
@@ -246,7 +254,7 @@
 
 
 <h2>Utilizando a API</h2>
-<h4>Para utilizar a API, basta acessar a URL: http://localhost:8080/api/usuarios, (http://localhost:8080/api/livros), (http://localhost:8080/api/revistas), (http://localhost:8080/api/ebooks), (http://localhost:8080/api/locacao/emprestimos), utilizando uma ferramenta como o Postman ou o cURL. </h4>
+<h4>Para utilizar a API via GET, basta acessar a URL: http://localhost:8080/api/usuarios, (http://localhost:8080/api/livros), (http://localhost:8080/api/revistas), (http://localhost:8080/api/ebooks), (http://localhost:8080/api/locacao/emprestimos), utilizando uma ferramenta como o Postman ou o cURL. </h4>
 
 <h2> Para uma utilização mais simples da API, foi disponibilizado a exportação de um aquivo chamado (API Kyros.postman_collection.json) para ser importado em seu Postman e ter as rotas já definidas e configuradas. </h2>
 
