@@ -46,6 +46,7 @@ public class EmprestimoService {
 		emprestimo.setCodigo(codigo);
 
 		Usuario usuario = usuarioRepository.findById(idUsuario).orElseThrow(() -> new NotFoundException());
+
 		emprestimo.setTipo_usuario(usuario.getTipo_usuario());
 		emprestimo.setNome_usuario(usuario.getNome());
 		emprestimo.setCpf_usuario(usuario.getCpf());
@@ -54,6 +55,19 @@ public class EmprestimoService {
 			emprestimo.setDataPrevistaDevolucao(LocalDate.now().plusDays(14));
 		} else {
 			emprestimo.setDataPrevistaDevolucao(LocalDate.now().plusDays(7));
+		}
+
+		Optional<Emprestimo> emprestimoOptional = Optional.ofNullable(emprestimoRepository.buscarId(idUsuario));
+
+		if (emprestimoOptional.isPresent()) {
+			Emprestimo emprestimo2 = emprestimoOptional.get();
+
+			if (emprestimo2.getDataPrevistaDevolucao().isBefore(LocalDate.now().plusDays(80))) {
+				String objeto = emprestimo.getTipo();
+				String usuarioNome = emprestimo.getNome_usuario();
+				throw new Exception(usuarioNome + " você tem um " + objeto + " que passou da data de devolução "
+						+ "por favor, devolva o para realizar  outro empréstimo");
+			}
 		}
 
 		switch (tipo) {
@@ -96,9 +110,9 @@ public class EmprestimoService {
 
 	public Emprestimo devolver(Long id) throws Exception {
 
-		Optional<Emprestimo> devolverid = emprestimoRepository.findById(id);
+		Optional<Emprestimo> devolverId = emprestimoRepository.findById(id);
 
-		Emprestimo devolver = devolverid.get();
+		Emprestimo devolver = devolverId.get();
 
 		devolver.setAtivo(false);
 		devolver.setDataDevolucao(LocalDate.now());

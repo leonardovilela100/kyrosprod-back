@@ -33,6 +33,7 @@ public class EbookController {
 			@RequestParam(defaultValue = "10") int size, @RequestParam(defaultValue = "codigo") String sort) {
 		PageRequest pageRequest = PageRequest.of(page, size, Sort.by(sort));
 		return ebookService.buscarEbooks(codigo, titulo, autor, ativo, pageRequest);
+
 	}
 
 	@PostMapping
