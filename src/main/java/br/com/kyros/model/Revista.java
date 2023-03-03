@@ -1,24 +1,16 @@
 package br.com.kyros.model;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "revista")
-public class Revista implements Serializable {
+public class Revista extends Produto {
 
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long codigo;
 
 	@Column(nullable = false)
 	private String titulo;
@@ -26,24 +18,7 @@ public class Revista implements Serializable {
 	@Column(nullable = false)
 	private Long numero;
 
-	@Column(nullable = false)
-	private String ano_edicao;
-
-	@Column(nullable = false)
-	private boolean ativo = true;
-
-	@Column(name = "emprestado")
-	private Boolean emprestado = false;
-
 	public Revista() {
-	}
-
-	public Long getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
 	}
 
 	public String getTitulo() {
@@ -62,47 +37,24 @@ public class Revista implements Serializable {
 		this.numero = numero;
 	}
 
-	public String getAno_edicao() {
-		return ano_edicao;
-	}
-
-	public void setAno_edicao(String ano_edicao) {
-		this.ano_edicao = ano_edicao;
-	}
-
-	public boolean isAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-
-	public Boolean getEmprestado() {
-		return emprestado;
-	}
-
-	public void setEmprestado(Boolean emprestado) {
-		this.emprestado = emprestado;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(ano_edicao, ativo, codigo, emprestado, numero, titulo);
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(numero, titulo);
+		return result;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Revista other = (Revista) obj;
-		return Objects.equals(ano_edicao, other.ano_edicao) && ativo == other.ativo
-				&& Objects.equals(codigo, other.codigo) && Objects.equals(emprestado, other.emprestado)
-				&& Objects.equals(numero, other.numero) && Objects.equals(titulo, other.titulo);
+		return Objects.equals(numero, other.numero) && Objects.equals(titulo, other.titulo);
 	}
 
 }
